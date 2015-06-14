@@ -7,7 +7,7 @@ class Jukebox
   end
 
   def call # this is our runner
-    "Welcome to the Object-oriented Jukebox!\n\n Please enter your command:"
+    "Welcome to the Object-oriented Jukebox!\n\n You can type play to go to the play menu, type play number of the song you's like to listen to, type play the name of the song you'd like to listen to\n\n. Alternatively, type help, list, or exit. \n\n. Please enter your command:"
     command = gets.strip
     
     case command
