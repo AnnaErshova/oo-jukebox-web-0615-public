@@ -7,14 +7,15 @@ class Jukebox
   end
 
   def call # this is our runner
-    "Welcome!\n\n Please enter your command:"
+    "Welcome to the Object-oriented Jukebox!\n\n Please enter your command:"
     command = gets.strip
+    
     case command
-      when "play"
+      when "play" # if just 'play', then plays a song
         play
       when /play+ /
-        song = command.split("play").last
-        play(song)
+        song = command.split("play ").last # need to remember the blank space there as it was throwing me off
+        play_song(song)
       when "help"
         help
       when "list"
@@ -22,18 +23,25 @@ class Jukebox
       when "exit"
         exit
     end # end case
+
   end # end call method
 
+  # broke play method into 3 methods to obey the single responsibililty principle
+
   def play(song = nil)
-    if song == nil
+    if song == nil # if no song specified
       puts "What would you like to listen to?"
       song = gets.strip
+      play_song(song)
     end # end if
+    play_song(song)
+  end
 
-    if song.to_i.to_s == song
-      puts "Now Playing: #{@songs[song.to_i - 1]}."
-    else
-      puts "Now Playing: #{song}."
+  def play_song(song)
+    if song.to_i.to_s == song # if song is a number
+      puts "Now Playing: #{@songs[song.to_i - 1]}" # plays a song of that number
+    else # is song is a title
+      puts "Now Playing: #{song}"
     end # end nested if
   end # end play
 
