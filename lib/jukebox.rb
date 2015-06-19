@@ -26,8 +26,6 @@ class Jukebox
 
   end # end call method
 
-  # broke play method into 3 methods to obey the single responsibililty principle
-
   def play(song = nil)
     if song == nil # if no song specified
       puts "What would you like to listen to?"
@@ -45,17 +43,15 @@ class Jukebox
     end # end nested if
   end # end play
 
-  def list
-    puts @songs
+  def help
+    puts "You are currently in the help menu.\n
+    Enter play to play a song.\n
+    Enter list to show a list of songs.\n
+    Enter exit to exit the Jukebox.\n"
   end
 
-  def help
-    puts "You are currently in the help menu.
-    Enter play to play a song.
-    Enter list to show a list of songs
-    Enter exit to exit the Jukebox"
-    # (/^(?=.*help)(?=.*list)(?=.*play)(?=.*exit).+/m)
-      # expected "" to match /^(?=.*help)(?=.*list)(?=.*play)(?=.*exit).+/m
+  def list
+    puts @songs
   end
 
   def exit
